@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>DSP-TTS - Demo Page</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Crimson+Text:400,400i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="index.css">
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+
+    <div class='section'>
+        <h1>DSP TTS : Double-Scale Prosody TTS Model For Chinese Speech Synthesize</h1>
+                    <li><a href='#section-1'>Comparison Experiment</a></li>
+                    <li><a href='#section-2'>Ablation Experiments</a></li>
+        <h3>Overall Structure of DSP-TTS</h3>
+        <p>
+        <img src="dsp.jpg" width="100%">
+        <hr>
+        <h2>Abstract:</h2>
+        <p>
+        <ul>
+Text-to-speech (TTS) aims to generate natural speech from provided text. Expressive speech synthesis greatly aids in synthesizing natural voices. Previous works on expressive Chinese TTS system focus more on the diffiences of the grammatical system between English and Chinese, however, the pronunication systems between both two languages are also divergent. The prosody in Chinese could be divided into intra-prosody and inter-prosody, and intra-prosody indicates the rhythmic variation within each phoneme duration, if the two are not modelled in harmony it can lead to unnatural speech. Therefore, we propose DSP-TTS with double-scale prosody extractors and predictors to capture inter-word and intra-word prosody respectively and joint training to uniform modelling of these two prosody. Both objective and subjective evaluations on the Mandarin Speech Dataset BZNSP demonstrate that the proposed method significantly improve the naturalness and expressiveness of the Chinese synthesized speech.
+
+        </ul>
+        </p>
+<hr>
+        <ul>
+            <li>The audio sample below is a sample synthesized using the model proposed in this paper.</li>
+            <li>The BZENSP dataset is used for training, which can be downloaded via https://www.data-baker.com/data/index/TNtts/</li>
+            <li>Samples shown here were selected based on diversity and quality.</li>
+
+        </ul>
+        </p>
+    </div>
+
+    <hr>
+
+    <div id='section-1' class='section'>
+        <h2>Samples for Comparison Experiment</h2>
+        <p> 1. Text: 现在是道儿越走越宽，人气越搞越旺。</p>
+<table border="1" width="100%">
+  <thead>
+    <tr>
+      <th style="text-align: center">Ground Truth<strong></strong></th>
+      <th style="text-align: center"><strong>FastSpeech 2</strong></th>
+              <th style="text-align: center"><strong>Grad-TTS</strong></th>
+              <th style="text-align: center"><strong>DSP-TTS</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><audio src="samples/1_gt.wav" controls="" preload=""></audio></td>
+        <td style="text-align: left"><audio src="samples/1_fs2.wav" controls="" preload=""></audio></td>
+              <td style="text-align: left"><audio src="samples/1_gradtts.wav" controls="" preload=""></audio></td>
+              <td style="text-align: left"><audio src="samples/1_ours.wav" controls="" preload=""></audio></td>
+    </tr>
+  </tbody>
+</table>
+
+        <p> 2. Text: 扪萝登塔远，刳木取泉遥。</p>
+<table border="1" width="100%">
+  <thead>
+    <tr>
+      <th style="text-align: center">Ground Truth<strong></strong></th>
+      <th style="text-align: center"><strong>FastSpeech 2</strong></th>
+              <th style="text-align: center"><strong>Grad-TTS</strong></th>
+              <th style="text-align: center"><strong>DSP-TTS</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><audio src="samples/2_gt.wav" controls="" preload=""></audio></td>
+        <td style="text-align: left"><audio src="samples/2_fs2.wav" controls="" preload=""></audio></td>
+              <td style="text-align: left"><audio src="samples/2_gradtts.wav" controls="" preload=""></audio></td>
+              <td style="text-align: left"><audio src="samples/2_ours.wav" controls="" preload=""></audio></td>
+    </tr>
+  </tbody>
+</table>
+
+                <p> 3. Text: 有什么不会的，尽管问我吧。</p>
+<table border="1" width="100%">
+  <thead>
+    <tr>
+      <th style="text-align: center">Ground Truth<strong></strong></th>
+      <th style="text-align: center"><strong>FastSpeech 2</strong></th>
+              <th style="text-align: center"><strong>Grad-TTS</strong></th>
+              <th style="text-align: center"><strong>DSP-TTS</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><audio src="samples/3_gt.wav" controls="" preload=""></audio></td>
+        <td style="text-align: left"><audio src="samples/3_fs2.wav" controls="" preload=""></audio></td>
+              <td style="text-align: left"><audio src="samples/3_gradtts.wav" controls="" preload=""></audio></td>
+              <td style="text-align: left"><audio src="samples/3_ours.wav" controls="" preload=""></audio></td>
+    </tr>
+  </tbody>
+</table>
+
+                        <p> 4. Text: 卯兔开新岁，两岸共迎春。</p>
+<table border="1" width="100%">
+  <thead>
+    <tr>
+      <th style="text-align: center">Ground Truth<strong></strong></th>
+      <th style="text-align: center"><strong>FastSpeech 2</strong></th>
+              <th style="text-align: center"><strong>Grad-TTS</strong></th>
+              <th style="text-align: center"><strong>DSP-TTS</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><audio src="samples/4_gt.wav" controls="" preload=""></audio></td>
+        <td style="text-align: left"><audio src="samples/4_fs2.wav" controls="" preload=""></audio></td>
+              <td style="text-align: left"><audio src="samples/4_gradtts.wav" controls="" preload=""></audio></td>
+              <td style="text-align: left"><audio src="samples/4_ours.wav" controls="" preload=""></audio></td>
+    </tr>
+  </tbody>
+</table>
+
+                                <p> 5. Text: 明晃晃的太阳持续煎烤着红土地。</p>
+<table border="1" width="100%">
+  <thead>
+    <tr>
+      <th style="text-align: center">Ground Truth<strong></strong></th>
+      <th style="text-align: center"><strong>FastSpeech 2</strong></th>
+              <th style="text-align: center"><strong>Grad-TTS</strong></th>
+              <th style="text-align: center"><strong>DSP-TTS</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><audio src="samples/5_gt.wav" controls="" preload=""></audio></td>
+        <td style="text-align: left"><audio src="samples/5_fs2.wav" controls="" preload=""></audio></td>
+              <td style="text-align: left"><audio src="samples/5_gradtts.wav" controls="" preload=""></audio></td>
+              <td style="text-align: left"><audio src="samples/5_ours.wav" controls="" preload=""></audio></td>
+    </tr>
+  </tbody>
+</table>
+
+    </div>
+
+    <hr>
+
+    <div id='section-2' class='section'>
+        <h2>Samples for Ablation Experiments</h2>
+        <li>FS 2 + SSP: Original FastSpeech 2 with Single-Scale Prosody module(only for inter-word prosody).</li>
+        <li>FS 2 + DSP: Original FastSpeech 2 with Double-Scale Prosody module(inter-word prosody and intra-word prosody). </li>
+        <li>FS 2 + diff: The integration of the FastSpeech 2 and diffusion module involves building upon FastSpeech 2 and utilizing diffusion to minimize errors in the Mel-spectrogram.</li>
+        <hr>
+        <h3>Ablation Experiments for models without diffusion module.</h3>
+        <p> 1. Text: 用不用我替你捂着嘴。</p>
+<table border="1" width="100%">
+  <thead>
+    <tr>
+      <th style="text-align: center">Ground Truth<strong></strong></th>
+      <th style="text-align: center"><strong>FastSpeech 2</strong></th>
+              <th style="text-align: center"><strong>FS 2 + SSP</strong></th>
+              <th style="text-align: center"><strong>FS 2 + DSP</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><audio src="samples/1_agt.wav" controls="" preload=""></audio></td>
+             <td style="text-align: left"><audio src="samples/1_afs2.wav" controls="" preload=""></audio></td>
+              <td style="text-align: left"><audio src="samples/1_ssp.wav" controls="" preload=""></audio></td>
+       <td style="text-align: left"><audio src="samples/1_dsp.wav" controls="" preload=""></audio></td>
+    </tr>
+  </tbody>
+</table>
+        <p> 2. Text: 窗外一片阴霾，这雨像是永远下不完了。</p>
+<table border="1" width="100%">
+  <thead>
+    <tr>
+      <th style="text-align: center">Ground Truth<strong></strong></th>
+      <th style="text-align: center"><strong>FastSpeech 2</strong></th>
+              <th style="text-align: center"><strong>FS 2 + SSP</strong></th>
+              <th style="text-align: center"><strong>FS 2 + DSP</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><audio src="samples/2_agt.wav" controls="" preload=""></audio></td>
+             <td style="text-align: left"><audio src="samples/2_afs2.wav" controls="" preload=""></audio></td>
+              <td style="text-align: left"><audio src="samples/2_ssp.wav" controls="" preload=""></audio></td>
+       <td style="text-align: left"><audio src="samples/2_dsp.wav" controls="" preload=""></audio></td>
+    </tr>
+  </tbody>
+</table>
+        <hr>
+        <h3>Ablation Experiments for models with diffusion module.</h3>
+        <p> 1. Text: 阳台栏杆应有防护措施。</p>
+<table border="1" width="100%">
+  <thead>
+    <tr>
+      <th style="text-align: center">Ground Truth<strong></strong></th>
+      <th style="text-align: center"><strong>Grad-TTS</strong></th>
+              <th style="text-align: center"><strong>FS 2 + diff</strong></th>
+              <th style="text-align: center"><strong>DSP-TTS</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><audio src="samples/3_agt.wav" controls="" preload=""></audio></td>
+             <td style="text-align: left"><audio src="samples/3_agradtts.wav" controls="" preload=""></audio></td>
+              <td style="text-align: left"><audio src="samples/3_afd.wav" controls="" preload=""></audio></td>
+       <td style="text-align: left"><audio src="samples/3_aours.wav" controls="" preload=""></audio></td>
+    </tr>
+  </tbody>
+</table>
+                <p> 2. Text: 我以前又愚蠢，又虚荣。</p>
+<table border="1" width="100%">
+  <thead>
+    <tr>
+      <th style="text-align: center">Ground Truth<strong></strong></th>
+      <th style="text-align: center"><strong>Grad-TTS</strong></th>
+              <th style="text-align: center"><strong>FS 2 + diff</strong></th>
+              <th style="text-align: center"><strong>DSP-TTS</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><audio src="samples/4_agt.wav" controls="" preload=""></audio></td>
+             <td style="text-align: left"><audio src="samples/4_agradtts.wav" controls="" preload=""></audio></td>
+              <td style="text-align: left"><audio src="samples/4_afd.wav" controls="" preload=""></audio></td>
+       <td style="text-align: left"><audio src="samples/4_aours.wav" controls="" preload=""></audio></td>
+    </tr>
+  </tbody>
+</table>
+
+
+    </div>
+
+
+</body>
+</html>
